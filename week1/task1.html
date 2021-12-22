@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <style>
+        
+        .container-x{
+            width: auto;
+            margin: 2%;
+            overflow: auto;
+            border-radius: 10px;
+            border: 1px solid black;
+            align-items: center;
+            flex-direction: column;
+        }
+        .row-x{
+            display: flex;
+            width: 1000px;
+            
+            margin: auto;
+            justify-content: center;
+        }
+        .image-class{
+            display: block;
+            width:20%;
+            margin: auto;
+            height:20%;
+            cursor: pointer;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center; 
+        }
+        .image-class:hover{
+            background: rgb(168, 15, 15);
+        }
+        .supreme-force{
+            width: 310px;
+            display: flex;
+            margin:auto;
+            border-radius: 5px;
+            border: 1px solid lightgray;
+            position: relative;
+            height: 200px;
+            margin:1%;
+        }
+        .iframe{
+            width:100%;
+            height:100%;
+        }
+        .thumbnail{
+            display: flex;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            justify-content: center;
+            height: 100%;
+            background-position: center;
+            position:absolute;
+        }
+        
+    </style>
+</head>
+<body style="background-color:white; font-weight:bold">
+    <center><h1>Task1</h1></center>
+    <div class="container-x">
+       
+       
+
+        <div class="holder">
+            <div class="row-x">
+                <div class="supreme-force" data="ayp0V1wSJCs"  imglink="5g.jpg" ></div>
+
+            </div>
+            <div class="row-x">
+                 <div class="supreme-force" data="dOnPAPJNM-0"  imglink="VR.jpg" ></div>
+                 <div class="supreme-force" data="2mY4nlzrUIE"  imglink="AR.jpg" ></div>
+
+            </div>
+            <div class="row-x">
+                
+                <div class="supreme-force" data="6ZwI96FbAB8" imglink="rpa.jpg" ></div>
+                <div class="supreme-force" data="UwsrzCVZAb8"  imglink="AI.jpg" ></div>
+                <div class="supreme-force" data="LlhmzVL5bm8"  imglink="IOT.jpg" ></div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+      
+        let elements=document.querySelectorAll(".supreme-force");
+        for(let i=0;i<elements.length;i++)
+        {
+            let id=elements[i].getAttribute("data");
+            let img=elements[i].getAttribute("imglink");
+            let iframe=document.createElement("iframe");
+            let url="https://www.youtube.com/embed/"+id;
+            iframe.setAttribute("src", url);
+            iframe.setAttribute("id", i);
+            iframe.setAttribute("allow", "autoplay");
+            iframe.setAttribute("class", "iframe");
+            iframe.setAttribute("frameborder", "0");
+
+            let div=document.createElement("div");
+            div.setAttribute("class", "thumbnail");
+            div.style.backgroundImage="url("+img+")";
+            div.setAttribute("id", i+"img");
+
+
+            let image=document.createElement("img");
+            image.setAttribute("src", "play.png");
+            image.setAttribute("class", "image-class")
+            image.setAttribute("alt", "no image found");
+            
+            image.setAttribute("onclick", "playVideo('"+i+"' ,'"+i+"img')");
+            
+            div.append(image);
+            elements[i].append(div);
+            elements[i].append(iframe);
+        }
+
+
+        function playVideo(idiframe, idimage){
+            let temp=document.getElementById(idiframe);
+            let tempsrc=temp.getAttribute("src");
+            tempsrc+="?enablejsapi=1&autoplay=1";
+            temp.setAttribute("src", tempsrc);
+            document.getElementById(idimage).style.display="none";
+        }
+
+        
+    </script>
+</body>
+</html>
